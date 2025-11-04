@@ -4,26 +4,24 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import java.util.Date;
-
+import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Compte {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private double solde;
+    private String nom;
+    private String email;
 
-    @Temporal(TemporalType.DATE)
-    private Date dateCreation;
+    @OneToMany(mappedBy = "client")
+    @ToString.Exclude  // Add this annotation
+    private List<Compte> comptes;
 
-    @Enumerated(EnumType.STRING)
-    private TypeCompte type;
-
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+    public Client(Object o, String ali, Object o1) {
+    }
 }

@@ -12,3 +12,9 @@ interface CompteProjection2 {
     double getSolde();
     TypeCompte getType();
 }
+
+@Projection(name = "clientDetails", types = Client.class)
+interface ClientProjection {
+    public String getNom();
+    public String getEmail();
+}
